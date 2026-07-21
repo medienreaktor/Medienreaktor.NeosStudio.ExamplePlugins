@@ -6,11 +6,14 @@
     "require": {
         "php": "^8.2",
         "neos/neos": "^9.1",
-        "medienreaktor/neos-studio": "@dev"
+        "medienreaktor/neos-studio": "^1.0"
     },
     "extra": {
         "neos": {
             "package-key": "Medienreaktor.NeosStudio.ExamplePlugins"
+        },
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
         }
     }
 }
