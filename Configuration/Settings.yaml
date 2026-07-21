@@ -1,0 +1,12 @@
+Medienreaktor:
+  NeosStudio:
+    # Register this package's bundle with the Studio shell. The
+    # StudioController reads this map and injects the assets into the served
+    # SPA; the shell's own build knows nothing about us. Build the bundle with
+    #   cd Resources/Private/Plugin && npm install && npm run build
+    # which emits the referenced files into Resources/Public/Plugin.
+    plugins:
+      'Medienreaktor.NeosStudio.ExamplePlugins':
+        javascript: 'resource://Medienreaktor.NeosStudio.ExamplePlugins/Public/Plugin/plugin.js'
+        stylesheet: 'resource://Medienreaktor.NeosStudio.ExamplePlugins/Public/Plugin/plugin.css'
+        position: 100
