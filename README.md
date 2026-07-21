@@ -61,3 +61,9 @@ Then flush Flow caches (so the new Settings/NodeTypes are picked up) and reload
 | `Resources/Private/Plugin/src/ExampleEditor.tsx` | The property editor |
 | `Configuration/Settings.yaml` | Registers the bundle with the shell |
 | `Configuration/NodeTypes.ExamplePlugin.yaml` | Demo property wiring the editor to `Neos.Demo:Content.Text` |
+
+## License
+
+This package is free software, released under the [GNU General Public License, version 3 or later](LICENSE).
+
+Copyright (C) 2026 medienreaktor GmbH
