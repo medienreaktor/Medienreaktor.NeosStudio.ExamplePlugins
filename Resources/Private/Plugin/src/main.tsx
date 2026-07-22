@@ -1,4 +1,4 @@
-import { panels, editors } from '@medienreaktor/neos-studio'
+import { panels, editors, shortcuts, toast } from '@medienreaktor/neos-studio'
 import { ExamplePanel } from './ExamplePanel'
 import { ExampleEditor } from './ExampleEditor'
 import './plugin.css'
@@ -24,4 +24,21 @@ panels.register({
 editors.register({
   id: 'Medienreaktor.NeosStudio.ExamplePlugins/Editors/Example',
   component: ExampleEditor,
+})
+
+/**
+ * A keyboard shortcut. 'mod' is ⌘ on macOS and Ctrl elsewhere; the shortcut
+ * appears automatically in the shell's shortcut overview (Shift+?). Module-level
+ * registration suits always-available actions like this one - inside a
+ * registered component, prefer the useKeyboardShortcut hook so the shortcut
+ * unmounts with it.
+ */
+shortcuts.register({
+  id: 'Medienreaktor.NeosStudio.ExamplePlugins:hello',
+  combo: 'mod+shift+e',
+  title: 'Example plugin greeting',
+  category: 'Example plugin',
+  handler: () => {
+    toast.info('Hello from the example plugin!')
+  },
 })
