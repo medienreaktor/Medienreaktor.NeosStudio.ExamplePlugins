@@ -4,9 +4,13 @@ A boilerplate for extending **Neos Studio** from a separate package. It
 registers two things into the running shell:
 
 - an **Example panel** (docked in the right/secondary region) that reads live
-  app state through `useStudio()`, and
+  app state through `useStudio()`,
 - an **Example inspector editor** — a colour picker — usable by any node type
-  property via `editor: 'Medienreaktor.NeosStudio.ExamplePlugins/Editors/Example'`.
+  property via `editor: 'Medienreaktor.NeosStudio.ExamplePlugins/Editors/Example'`, and
+- an **Example node decorator** that badges recently edited nodes with a clock
+  overlay in every tree (node decorators can also replace the type icon or
+  tint/dim a whole row — the shell's hidden/deleted marks use the same
+  registry).
 
 Copy this package, rename it, and replace the example panel/editor with your
 own.

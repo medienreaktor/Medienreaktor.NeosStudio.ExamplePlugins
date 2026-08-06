@@ -1,4 +1,10 @@
-import { panels, editors, shortcuts, toast } from '@medienreaktor/neos-studio'
+import {
+  panels,
+  editors,
+  shortcuts,
+  nodeDecorators,
+  toast,
+} from '@medienreaktor/neos-studio'
 import { ExamplePanel } from './ExamplePanel'
 import { ExampleEditor } from './ExampleEditor'
 import './plugin.css'
@@ -40,5 +46,34 @@ shortcuts.register({
   category: 'Example plugin',
   handler: () => {
     toast.info('Hello from the example plugin!')
+  },
+})
+
+/**
+ * A node decorator: every tree row (document tree, content outliner, search
+ * results, pickers) runs the registered decorators against its node. A
+ * decoration can replace the type icon, layer a small badge onto its corner,
+ * or tint/dim the whole row - the shell's own type icon and hidden/deleted
+ * marks come from the same registry (at order 0/10, so a plugin's decoration,
+ * default order 100, wins where they overlap).
+ *
+ * This one badges nodes edited within the last 24 hours. Decorators run
+ * during render for every visible row, so derive the decoration cheaply from
+ * the node object (tags, properties, nodeType, timestamps).
+ */
+nodeDecorators.register({
+  id: 'Medienreaktor.NeosStudio.ExamplePlugins:recentlyChanged',
+  decorate: (node) => {
+    if (!node.timestamps.lastModified) return null
+    const age = Date.now() - new Date(node.timestamps.lastModified).getTime()
+    if (age > 24 * 60 * 60 * 1000) return null
+    return {
+      overlay: {
+        icon: 'clock',
+        color: 'var(--color-blue-500)',
+        label: 'Changed in the last 24 hours',
+        position: 'top-right',
+      },
+    }
   },
 })
