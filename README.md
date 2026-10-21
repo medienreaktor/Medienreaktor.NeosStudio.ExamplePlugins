@@ -31,10 +31,13 @@ React, whose hooks and context would not line up with the shell's. So:
    `react`, `react-dom`, `react/jsx-runtime` and `@medienreaktor/neos-studio`
    resolve to the shell's globals at runtime. The plugin therefore renders with
    the shell's single React instance and registers into the shell's real
-   registries. Types for `@medienreaktor/neos-studio` come from the package of
-   the same name (a `file:` dependency in `package.json`), whose `index.d.ts`
-   is generated from the shell's own plugin-API source — so the types you code
-   against are always the shell's real types, never a hand-copied subset.
+   registries. Types for `@medienreaktor/neos-studio` come from the shell's
+   `Resources/Public/Studio/types/index.d.ts`, mapped in
+   [`tsconfig.json`](Resources/Private/Plugin/tsconfig.json) `paths` (with
+   `react`/`react-dom` mapped to this plugin's `@types`, as that file lies
+   outside it). It is generated from the shell's own plugin-API source on
+   every shell build — so the types you code against are always the shell's
+   real types, never a hand-copied subset.
 3. **The shell injects the bundle.** `StudioController` reads the
    `Medienreaktor.NeosStudio.plugins` setting (see
    [`Configuration/Settings.yaml`](Configuration/Settings.yaml)) and injects the
