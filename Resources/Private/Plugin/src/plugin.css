@@ -90,8 +90,8 @@
 
 /* The swatches show the editor's own colours, so only their frame is themed. */
 .nsx-swatch {
-  width: calc(var(--spacing) * 6);
-  height: calc(var(--spacing) * 6);
+  width: calc(var(--spacing) * 5.5);
+  height: calc(var(--spacing) * 5.5);
   padding: 0;
   border: 2px solid transparent;
   border-radius: var(--radius-md);
@@ -111,8 +111,8 @@
 
 .nsx-preview {
   flex-shrink: 0;
-  width: calc(var(--spacing) * 6);
-  height: calc(var(--spacing) * 6);
+  width: calc(var(--spacing) * 5.5);
+  height: calc(var(--spacing) * 5.5);
   border-radius: var(--radius-md);
   box-shadow: 0 0 0 1px var(--color-border) inset;
 }
