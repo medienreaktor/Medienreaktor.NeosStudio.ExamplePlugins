@@ -46,7 +46,7 @@ React, whose hooks and context would not line up with the shell's. So:
    its globals and mounts first, then the plugin registers. Registries are
    observable, so late registration just triggers a re-render.
 
-`Medienreaktor.NeosStudio` must be installed; the plugin is purely additive.
+`Medienreaktor.NeosStudio` 1.19 or newer must be installed — the styles use its design tokens; the plugin is purely additive.
 
 ## Building
 
@@ -66,6 +66,7 @@ Then flush Flow caches (so the new Settings/NodeTypes are picked up) and reload
 | `Resources/Private/Plugin/src/main.tsx` | Entry point — registers the panel and editor |
 | `Resources/Private/Plugin/src/ExamplePanel.tsx` | The panel component |
 | `Resources/Private/Plugin/src/ExampleEditor.tsx` | The property editor |
+| `Resources/Private/Plugin/src/plugin.css` | Scoped styles on Studio's design tokens (`var(--color-card)`, `var(--text-body)`, …), so the plugin follows the theme |
 | `Configuration/Settings.yaml` | Registers the bundle with the shell |
 | `Configuration/NodeTypes.ExamplePlugin.yaml` | Demo property wiring the editor to `Neos.Demo:Content.Text` |
 
