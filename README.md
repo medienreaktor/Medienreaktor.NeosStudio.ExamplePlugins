@@ -1,5 +1,10 @@
 # Medienreaktor.NeosStudio.ExamplePlugins
 
+[![Packagist Version](https://img.shields.io/packagist/v/medienreaktor/neos-studio-example-plugins)](https://packagist.org/packages/medienreaktor/neos-studio-example-plugins)
+[![PHP Version Support](https://img.shields.io/packagist/dependency-v/medienreaktor/neos-studio-example-plugins/php)](https://www.php.net/)
+[![Test Status](https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/actions/workflows/ci.yml/badge.svg)](https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg)](LICENSE)
+
 A boilerplate for extending **Neos Studio** from a separate package. It
 registers two things into the running shell:
 
@@ -46,7 +51,7 @@ React, whose hooks and context would not line up with the shell's. So:
    its globals and mounts first, then the plugin registers. Registries are
    observable, so late registration just triggers a re-render.
 
-`Medienreaktor.NeosStudio` 1.19 or newer must be installed — the styles use its design tokens; the plugin is purely additive.
+`Medienreaktor.NeosStudio` 1.19.1 or newer must be installed — the styles use its design tokens; the plugin is purely additive.
 
 ## Building
 
@@ -58,6 +63,14 @@ npm run build        # emits Resources/Public/Plugin/{plugin.js,plugin.css}
 
 Then flush Flow caches (so the new Settings/NodeTypes are picked up) and reload
 `/neos/studio`. Use `npm run dev` to rebuild on change while developing.
+
+`npm run build` type-checks before it bundles, against the declarations Studio
+generates into `Resources/Public/Studio/types/index.d.ts`. No Studio release
+ships them yet - they come with the Neos.Api integration still under
+development - so until one does, the type check fails against a released
+Studio. `npx vite build` bundles without it, which is also what CI runs.
+
+Run `npm run format` before committing; CI checks the formatting.
 
 ## Layout
 
