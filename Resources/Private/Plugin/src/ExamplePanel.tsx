@@ -14,8 +14,9 @@ export function ExamplePanel() {
   return (
     <div className="nsx-panel">
       <p className="nsx-panel__lead">
-        This panel ships from <code>Medienreaktor.NeosStudio.ExamplePlugins</code>,
-        a package separate from the Studio shell. It reads live app state through{' '}
+        This panel ships from{' '}
+        <code>Medienreaktor.NeosStudio.ExamplePlugins</code>, a package separate
+        from the Studio shell. It reads live app state through{' '}
         <code>useStudio()</code>.
       </p>
 

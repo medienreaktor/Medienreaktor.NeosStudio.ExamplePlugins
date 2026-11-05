@@ -1,2 +1,10 @@
 Resources/Private/Plugin/node_modules/
 Resources/Public/
+/vendor/
+# neos/composer-plugin installs neos-package dependencies here rather than into
+# vendor/, so a standalone `composer install` creates this alongside vendor/.
+/Packages/
+# Packages of type neos-build land here rather than in vendor/, for the same
+# reason.
+/Build/
+/composer.lock

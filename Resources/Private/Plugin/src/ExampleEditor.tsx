@@ -57,7 +57,10 @@ export function ExampleEditor({
         ))}
       </div>
       <div className="nsx-editor__row">
-        <span className="nsx-preview" style={{ backgroundColor: text || 'transparent' }} />
+        <span
+          className="nsx-preview"
+          style={{ backgroundColor: text || 'transparent' }}
+        />
         <input
           type="text"
           className="nsx-input"
