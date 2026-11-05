@@ -8,6 +8,9 @@
         "neos/neos": "^9.1",
         "medienreaktor/neos-studio": "^1.19.1"
     },
+    "require-dev": {
+        "neos/contentgraph-doctrinedbaladapter": "^9.1"
+    },
     "extra": {
         "neos": {
             "package-key": "Medienreaktor.NeosStudio.ExamplePlugins"
@@ -15,5 +18,16 @@
         "branch-alias": {
             "dev-main": "1.0.x-dev"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "neos/composer-plugin": true
+        }
+    },
+    "scripts": {
+        "lint:composer": "@composer validate --strict --no-check-lock",
+        "lint": [
+            "@lint:composer"
+        ]
     }
 }

@@ -1,0 +1,9 @@
+# Development-only files stay out of the Composer package (git archive, and
+# with it the Packagist dist, skips export-ignore paths).
+
+# The CI and the tool configuration it reads.
+/.github export-ignore
+
+# Repository tooling.
+/.gitattributes export-ignore
+/.gitignore export-ignore
