@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-05
+
 ### Added
 
 - A keyboard shortcut example: `mod+shift+e` shows a greeting toast, through
@@ -47,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The GPL-3.0 license, and Composer constraints and a branch alias for the
   sibling packages.
 
-[Unreleased]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/compare/1.0.1...1.1.0
 [1.0.1]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/compare/1.0...1.0.1
 [1.0]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/releases/tag/1.0
