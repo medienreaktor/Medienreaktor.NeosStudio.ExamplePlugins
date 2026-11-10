@@ -1,11 +1,12 @@
-import { useStudio, toast } from '@medienreaktor/neos-studio'
+import { Button, useStudio, toast } from '@medienreaktor/neos-studio'
 
 /**
  * A panel is a prop-less component: it reads everything it needs from
  * `useStudio()` - the same hook (and the same React) the shell's own panels
  * use, because at runtime this bundle resolves `react` and the plugin API to
  * the shell's globals. Register it (see main.tsx) and the shell docks it like
- * any built-in panel.
+ * any built-in panel. Its button is the shell's own `Button` - plugins build
+ * their UI from the shell's components and only style their own layout.
  */
 export function ExamplePanel() {
   const studio = useStudio()
@@ -33,9 +34,10 @@ export function ExamplePanel() {
         </dd>
       </dl>
 
-      <button
-        type="button"
-        className="nsx-button"
+      <Button
+        variant="outline"
+        size="sm"
+        className="nsx-panel__action"
         onClick={() =>
           toast.success(
             node
@@ -46,7 +48,7 @@ export function ExamplePanel() {
         }
       >
         Show a toast
-      </button>
+      </Button>
     </div>
   )
 }

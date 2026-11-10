@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { PropertyEditorProps } from '@medienreaktor/neos-studio'
+import { Input, type PropertyEditorProps } from '@medienreaktor/neos-studio'
 
 /**
  * A property editor conforms to the shared editor contract (PropertyEditorProps)
@@ -15,6 +15,8 @@ import type { PropertyEditorProps } from '@medienreaktor/neos-studio'
  * This example edits a colour string: click a swatch (a discrete pick →
  * commit) or type a value (change per keystroke, commit on blur). The swatch
  * list comes from `options.colors`, i.e. editorOptions in node type config.
+ * The text field is the shell's `Input`, so it matches the built-in editors
+ * (including the invalid state); the swatches are this plugin's own markup.
  */
 export function ExampleEditor({
   value,
@@ -61,9 +63,9 @@ export function ExampleEditor({
           className="nsx-preview"
           style={{ backgroundColor: text || 'transparent' }}
         />
-        <input
+        <Input
           type="text"
-          className="nsx-input"
+          className="nsx-editor__input"
           value={text}
           autoFocus={autoFocus}
           aria-invalid={invalid || undefined}

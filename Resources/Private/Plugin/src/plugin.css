@@ -1,9 +1,10 @@
 /*
  * Plugin styles. The shell's Tailwind build only scans the shell's own source,
  * so a plugin cannot rely on arbitrary Tailwind utility classes being present.
- * Ship your own scoped CSS instead - prefixed here with `nsx-` so it never
- * clashes with the shell. The StudioController injects this file alongside the
- * bundle (see Settings.yaml).
+ * Use the shell's components (Button, Input, ... from
+ * '@medienreaktor/neos-studio') for controls and ship your own scoped CSS for
+ * the rest - prefixed here with `nsx-` so it never clashes with the shell. The
+ * StudioController injects this file alongside the bundle (see Settings.yaml).
  *
  * To look like Studio, read its design tokens: the shell declares them as CSS
  * custom properties at runtime and switches them with its light/dark theme, so
@@ -51,27 +52,9 @@
   overflow-wrap: anywhere;
 }
 
-/* Studio's outline button. */
-.nsx-button {
+/* Studio's Button, placed by the panel's layout. */
+.nsx-panel__action {
   align-self: flex-start;
-  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--color-input) 30%, transparent);
-  color: var(--color-foreground);
-  font: inherit;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.nsx-button:hover {
-  background: color-mix(in srgb, var(--color-input) 50%, transparent);
-}
-
-.nsx-button:focus-visible {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-ring) 50%, transparent);
 }
 
 /* --- Editor --- */
@@ -88,7 +71,9 @@
   gap: calc(var(--spacing) * 1.5);
 }
 
-/* The swatches show the editor's own colours, so only their frame is themed. */
+/* No Studio component covers a colour swatch, so it is this plugin's own
+   control. The swatches show the editor's own colours, so only their frame is
+   themed. */
 .nsx-swatch {
   width: calc(var(--spacing) * 5.5);
   height: calc(var(--spacing) * 5.5);
@@ -97,6 +82,11 @@
   border-radius: var(--radius-md);
   box-shadow: 0 0 0 1px var(--color-border) inset;
   cursor: pointer;
+}
+
+.nsx-swatch:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-ring) 50%, transparent);
+  outline-offset: 1px;
 }
 
 .nsx-swatch--active {
@@ -117,25 +107,12 @@
   box-shadow: 0 0 0 1px var(--color-border) inset;
 }
 
-/* Studio's input. */
-.nsx-input {
+/* Studio's Input (border, focus and invalid state come with it); only the
+   layout and the monospace face for the colour value are the plugin's. */
+.nsx-editor__input {
   flex: 1;
   min-width: 0;
-  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--color-input) 30%, transparent);
-  color: var(--color-foreground);
   font-family: var(--font-mono);
   font-size: var(--text-code);
   line-height: var(--text-code--line-height);
-}
-
-.nsx-input:focus-visible {
-  outline: none;
-  border-color: var(--color-primary);
-}
-
-.nsx-input[aria-invalid='true'] {
-  border-color: var(--color-destructive);
 }

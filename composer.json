@@ -1,22 +1,22 @@
 {
     "name": "medienreaktor/neos-studio-example-plugins",
     "type": "neos-package",
-    "description": "Boilerplate showing how to extend Neos Studio from a separate package: registers an example panel and an example inspector property editor.",
+    "description": "Boilerplate showing how to extend Neos Studio from a separate package: a panel, an inspector property editor, a keyboard shortcut and a node decorator, built with Studio's UI components (plugin API version 2).",
     "license": "GPL-3.0-or-later",
     "require": {
-        "php": "^8.2",
-        "neos/neos": "^9.1",
-        "medienreaktor/neos-studio": "^1.19.1"
+        "php": "^8.4",
+        "neos/neos": "^9.2",
+        "medienreaktor/neos-studio": "^2.0.3"
     },
     "require-dev": {
-        "neos/contentgraph-doctrinedbaladapter": "^9.1"
+        "neos/contentgraph-doctrinedbaladapter": "^9.2"
     },
     "extra": {
         "neos": {
             "package-key": "Medienreaktor.NeosStudio.ExamplePlugins"
         },
         "branch-alias": {
-            "dev-main": "1.0.x-dev"
+            "dev-main": "2.0.x-dev"
         }
     },
     "config": {
