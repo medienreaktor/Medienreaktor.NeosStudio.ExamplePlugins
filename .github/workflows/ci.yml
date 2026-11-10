@@ -163,4 +163,5 @@ jobs:
       # Resources/Public/Studio/types/ of the Studio package installed next to
       # this one, which this job does not check out.
       - name: Build
-        run: npx vite build
+        # Both bundles: plugin.js and the preview's guest.js.
+        run: npm run bundle

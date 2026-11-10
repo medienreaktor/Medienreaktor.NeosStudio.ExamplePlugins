@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="" product-name="Medienreaktor.NeosStudio.ExamplePlugins" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="action.copyNodeId" xml:space="preserve">
+        <source>Copy node ID</source>
+      </trans-unit>
+      <trans-unit id="action.copyNodeId.done" xml:space="preserve">
+        <source>Copied the ID of "{0}".</source>
+      </trans-unit>
+      <trans-unit id="decorator.recentlyChanged" xml:space="preserve">
+        <source>Changed in the last 24 hours</source>
+      </trans-unit>
+      <trans-unit id="panel.inspectedNode" xml:space="preserve">
+        <source>Inspected node</source>
+      </trans-unit>
+      <trans-unit id="panel.lastSaved" xml:space="preserve">
+        <source>Last saved</source>
+      </trans-unit>
+      <trans-unit id="panel.lead" xml:space="preserve">
+        <source>This panel ships from a package separate from the Studio shell. It reads live app state through useStudio().</source>
+      </trans-unit>
+      <trans-unit id="panel.nodeType" xml:space="preserve">
+        <source>Node type</source>
+      </trans-unit>
+      <trans-unit id="panel.selectedDocument" xml:space="preserve">
+        <source>Selected document</source>
+      </trans-unit>
+      <trans-unit id="panel.showToast" xml:space="preserve">
+        <source>Show a toast</source>
+      </trans-unit>
+      <trans-unit id="panel.signedInAs" xml:space="preserve">
+        <source>Signed in as</source>
+      </trans-unit>
+      <trans-unit id="panel.title" xml:space="preserve">
+        <source>Example</source>
+      </trans-unit>
+      <trans-unit id="panel.toast.inspecting" xml:space="preserve">
+        <source>Inspecting "{0}".</source>
+      </trans-unit>
+      <trans-unit id="panel.toast.nothing" xml:space="preserve">
+        <source>Nothing is inspected yet - select a node.</source>
+      </trans-unit>
+      <trans-unit id="panel.workspace" xml:space="preserve">
+        <source>Workspace</source>
+      </trans-unit>
+      <trans-unit id="plugin.name" xml:space="preserve">
+        <source>Example plugin</source>
+      </trans-unit>
+      <trans-unit id="shortcut.hello" xml:space="preserve">
+        <source>Example plugin greeting</source>
+      </trans-unit>
+      <trans-unit id="shortcut.hello.toast" xml:space="preserve">
+        <source>Hello from the example plugin!</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

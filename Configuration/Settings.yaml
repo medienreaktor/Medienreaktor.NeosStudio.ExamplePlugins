@@ -9,4 +9,19 @@ Medienreaktor:
       'Medienreaktor.NeosStudio.ExamplePlugins':
         javascript: 'resource://Medienreaktor.NeosStudio.ExamplePlugins/Public/Plugin/plugin.js'
         stylesheet: 'resource://Medienreaktor.NeosStudio.ExamplePlugins/Public/Plugin/plugin.css'
+        # Loaded into the edit-mode preview frame, where inline editing runs:
+        # registers the highlight mark there too (src/guest.ts).
+        guestJavascript: 'resource://Medienreaktor.NeosStudio.ExamplePlugins/Public/Plugin/guest.js'
         position: 100
+
+Neos:
+  Neos:
+    userInterface:
+      translation:
+        # Ship this package's labels (Resources/Private/Translations/<locale>/Main.xlf)
+        # in the translation bundle Studio loads, so the plugin's translate()
+        # calls find them. After adding this to an existing installation, flush
+        # the bundle once: ./flow flow:cache:flushone Neos_Neos_XliffToJsonTranslations
+        autoInclude:
+          Medienreaktor.NeosStudio.ExamplePlugins:
+            - Main

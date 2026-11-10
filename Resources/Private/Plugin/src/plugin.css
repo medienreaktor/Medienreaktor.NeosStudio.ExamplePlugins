@@ -28,6 +28,10 @@
   color: var(--color-muted-foreground);
 }
 
+.nsx-panel__icon {
+  color: var(--color-primary-text);
+}
+
 .nsx-panel code,
 .nsx-facts code {
   color: var(--color-foreground);

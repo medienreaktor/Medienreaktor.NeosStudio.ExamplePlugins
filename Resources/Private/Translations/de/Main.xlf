@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="" product-name="Medienreaktor.NeosStudio.ExamplePlugins" source-language="en" datatype="plaintext" target-language="de">
+    <body>
+      <trans-unit id="action.copyNodeId" xml:space="preserve">
+        <source>Copy node ID</source>
+        <target xml:lang="de">Node-ID kopieren</target>
+      </trans-unit>
+      <trans-unit id="action.copyNodeId.done" xml:space="preserve">
+        <source>Copied the ID of "{0}".</source>
+        <target xml:lang="de">Die ID von „{0}“ wurde kopiert.</target>
+      </trans-unit>
+      <trans-unit id="decorator.recentlyChanged" xml:space="preserve">
+        <source>Changed in the last 24 hours</source>
+        <target xml:lang="de">In den letzten 24 Stunden geändert</target>
+      </trans-unit>
+      <trans-unit id="panel.inspectedNode" xml:space="preserve">
+        <source>Inspected node</source>
+        <target xml:lang="de">Ausgewählter Node</target>
+      </trans-unit>
+      <trans-unit id="panel.lastSaved" xml:space="preserve">
+        <source>Last saved</source>
+        <target xml:lang="de">Zuletzt gespeichert</target>
+      </trans-unit>
+      <trans-unit id="panel.lead" xml:space="preserve">
+        <source>This panel ships from a package separate from the Studio shell. It reads live app state through useStudio().</source>
+        <target xml:lang="de">Dieses Panel stammt aus einem eigenen Paket außerhalb der Studio-Shell. Es liest den aktuellen Zustand über useStudio().</target>
+      </trans-unit>
+      <trans-unit id="panel.nodeType" xml:space="preserve">
+        <source>Node type</source>
+        <target xml:lang="de">Node-Typ</target>
+      </trans-unit>
+      <trans-unit id="panel.selectedDocument" xml:space="preserve">
+        <source>Selected document</source>
+        <target xml:lang="de">Ausgewähltes Dokument</target>
+      </trans-unit>
+      <trans-unit id="panel.showToast" xml:space="preserve">
+        <source>Show a toast</source>
+        <target xml:lang="de">Toast anzeigen</target>
+      </trans-unit>
+      <trans-unit id="panel.signedInAs" xml:space="preserve">
+        <source>Signed in as</source>
+        <target xml:lang="de">Angemeldet als</target>
+      </trans-unit>
+      <trans-unit id="panel.title" xml:space="preserve">
+        <source>Example</source>
+        <target xml:lang="de">Beispiel</target>
+      </trans-unit>
+      <trans-unit id="panel.toast.inspecting" xml:space="preserve">
+        <source>Inspecting "{0}".</source>
+        <target xml:lang="de">„{0}“ ist ausgewählt.</target>
+      </trans-unit>
+      <trans-unit id="panel.toast.nothing" xml:space="preserve">
+        <source>Nothing is inspected yet - select a node.</source>
+        <target xml:lang="de">Noch nichts ausgewählt – wähle einen Node aus.</target>
+      </trans-unit>
+      <trans-unit id="panel.workspace" xml:space="preserve">
+        <source>Workspace</source>
+        <target xml:lang="de">Workspace</target>
+      </trans-unit>
+      <trans-unit id="plugin.name" xml:space="preserve">
+        <source>Example plugin</source>
+        <target xml:lang="de">Beispiel-Plugin</target>
+      </trans-unit>
+      <trans-unit id="shortcut.hello" xml:space="preserve">
+        <source>Example plugin greeting</source>
+        <target xml:lang="de">Begrüßung des Beispiel-Plugins</target>
+      </trans-unit>
+      <trans-unit id="shortcut.hello.toast" xml:space="preserve">
+        <source>Hello from the example plugin!</source>
+        <target xml:lang="de">Hallo vom Beispiel-Plugin!</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

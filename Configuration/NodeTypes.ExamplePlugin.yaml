@@ -15,6 +15,15 @@
           icon: 'puzzle-piece'
           position: 950
   properties:
+    # The "highlight" rich text extension (src/richText.ts) is enabled per
+    # property by a formatting key. This merges it into the demo text's
+    # existing formatting, for inline editing in the preview.
+    text:
+      ui:
+        inline:
+          editorOptions:
+            formatting:
+              highlight: true
     examplePluginHighlight:
       type: string
       ui:
