@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-11-10
+
+### Added
+
+- A node action example: "Copy node ID" in the node context menus and the
+  documents toolbar, through Studio's `nodeActions` registry.
+- A rich text extension example: a highlight mark with a toolbar button,
+  enabled on the Neos.Demo text element, in the inspector and - through a
+  second bundle, `guest.js`, loaded into the preview frame - inline editing.
+- The panel loads data with `useQuery` on Studio's own query cache and shows
+  the last saved property through the `useStudioEvent` hook.
+- The plugin's labels are translated (English, German) from the package's
+  own XLIFF files, which `Settings.yaml` adds to Neos' translation bundle.
+
+### Changed
+
+- Requires Neos Studio 2.0.5.
+- `npm run bundle` builds both bundles; CI runs it.
+
 ## [2.0.0] - 2026-11-10
 
 Targets Neos Studio 2 and its plugin API version 2.
@@ -65,7 +84,8 @@ Targets Neos Studio 2 and its plugin API version 2.
 - The GPL-3.0 license, and Composer constraints and a branch alias for the
   sibling packages.
 
-[Unreleased]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/compare/2.0.1...HEAD
+[2.0.1]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/compare/1.0.1...2.0.0
 [1.0.1]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/compare/1.0...1.0.1
 [1.0]: https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/releases/tag/1.0

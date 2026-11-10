@@ -1,16 +1,17 @@
 {
   "name": "@medienreaktor/neos-studio-example-plugins",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc && npm run bundle",
     "dev": "vite build --watch",
     "format": "prettier --write src",
-    "format:check": "prettier --check src"
+    "format:check": "prettier --check src",
+    "bundle": "vite build && vite build --config vite.guest.config.ts"
   },
   "comment": "The plugin API TYPES come from the shell's generated Resources/Public/Studio/types/index.d.ts, mapped to '@medienreaktor/neos-studio' in tsconfig.json paths; at runtime it and react/react-dom are marked external in vite.config.ts and resolved from the shell's copy on window (see src/main.tsx). Keep react majors aligned with the host so types match.",
   "devDependencies": {
