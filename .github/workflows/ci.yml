@@ -67,15 +67,27 @@ jobs:
           dependency-versions: highest
           composer-options: "--prefer-dist"
 
-      # composer validate --strict runs as part of this, as lint:composer. The
-      # manifest is this package's contract with every consuming distribution, and
-      # a wrong constraint there is exactly the class of bug that reaches projects
-      # silently.
-      - name: Run Linting (composer validate)
-        run: composer lint
+      # The parts of `composer lint`, called one by one so that each reports on its
+      # own line and the two below can wait for code to exist.
+      #
+      # The manifest is this package's contract with every consuming distribution,
+      # and a wrong constraint there is exactly the class of bug that reaches
+      # projects silently. It is checked whether or not the package ships PHP.
+      - name: Validate composer.json
+        run: composer lint:composer
 
-  install:
-    name: Install (PHP ${{ matrix.php }}, ${{ matrix.deps }} deps)
+      # PHPStan and PHP_CodeSniffer refuse to run on zero files, so in a package
+      # without PHP they are skipped and start with the first class - no edit here.
+      - name: Run PHP CodeSniffer
+        if: hashFiles('Classes/**/*.php') != ''
+        run: composer lint:phpcs
+
+      - name: Run PHPStan
+        if: hashFiles('Classes/**/*.php') != ''
+        run: composer lint:phpstan
+
+  test:
+    name: Test (PHP ${{ matrix.php }}, ${{ matrix.deps }} deps)
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -84,9 +96,11 @@ jobs:
       # fails.
       fail-fast: false
       matrix:
-        # The package has no PHP test suite, so this matrix proves what it can:
-        # that the range composer.json declares installs on every interpreter it
-        # covers. Neos Studio 2 sets the floor at PHP 8.4, and both ends of the
+        # The range composer.json declares has to install on every interpreter it
+        # covers, and the unit suite runs on each of them - empty until the first
+        # test lands in Tests/Unit, and passing as such.
+        #
+        # Neos Studio 2 sets the floor at PHP 8.4, and both ends of the
         # range are exercised rather than asserted:
         #
         #   - `lowest` pins the oldest set Composer will install against the
@@ -128,16 +142,56 @@ jobs:
       - name: Show resolved dependency versions
         run: composer show --direct
 
-  # The plugin bundle is built at install time rather than committed, so this
-  # job checks that the sources format cleanly and bundle.
+      - name: Run Tests (PHPUnit)
+        run: composer test
+
+  # Lists every frontend: a tracked package.json at the root or one level under
+  # Resources/Private/. Deeper ones (a types package published inside
+  # Resources/Public, a workspace member) belong to the frontend above them.
+  # The frontend job below needs the list as a matrix before any of its own
+  # steps run, which only a job output can provide; without a frontend the list
+  # is empty and the frontend job is skipped.
+  detect:
+    name: Detect frontends
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      frontends: ${{ steps.list.outputs.frontends }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: List frontends
+        id: list
+        run: |
+          frontends=$(git ls-files -- ':(glob)package.json' ':(glob)Resources/Private/*/package.json' \
+            | xargs -r -n1 dirname | jq -Rnc '[inputs]')
+          echo "frontends=$frontends" >> "$GITHUB_OUTPUT"
+          echo "Frontends: $frontends"
+
+  # A frontend this package ships is committed prebuilt, so what installations run
+  # is what was committed, not what the sources say. This job lints and builds
+  # each frontend and fails when the build differs from what is committed, which
+  # also covers the type check a build runs.
   frontend:
-    name: Frontend (formats and builds)
+    # No matrix expression in the name: GitHub appends the matrix value itself
+    # ("Frontend (Resources/Private/Plugin)"), and a skipped job would otherwise
+    # show the unexpanded expression.
+    name: Frontend
+    needs: detect
+    if: needs.detect.outputs.frontends != '[]'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
+    strategy:
+      fail-fast: false
+      matrix:
+        dir: ${{ fromJSON(needs.detect.outputs.frontends) }}
+
     defaults:
       run:
-        working-directory: Resources/Private/Plugin
+        working-directory: ${{ matrix.dir }}
 
     steps:
       - name: Checkout code
@@ -148,20 +202,27 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v7
         with:
-          node-version-file: Resources/Private/Plugin/.nvmrc
+          node-version-file: ${{ matrix.dir }}/.nvmrc
           cache: npm
-          cache-dependency-path: Resources/Private/Plugin/package-lock.json
+          cache-dependency-path: ${{ matrix.dir }}/package-lock.json
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Check formatting (Prettier)
-        run: npm run format:check
+      - name: Run Linting
+        run: npm run lint
 
-      # Bundle only. The type check (`npm run build` starts with tsc) maps the
-      # plugin API to the declarations Studio ships in
-      # Resources/Public/Studio/types/ of the Studio package installed next to
-      # this one, which this job does not check out.
+      # A sidecar that runs its sources as they are has nothing to build; that
+      # is what the frontend is, not a missing script.
       - name: Build
-        # Both bundles: plugin.js and the preview's guest.js.
-        run: npm run bundle
+        run: npm run build --if-present
+
+      # Covers every frontend layout without naming an output directory: a build
+      # that is committed must come out identical, and one that is gitignored
+      # leaves nothing to compare. Untracked files count too - a new hashed asset
+      # that was never committed is exactly the drift this guards against.
+      - name: Compare with the committed build
+        working-directory: .
+        run: |
+          git add --intent-to-add --all
+          git diff --exit-code --stat
