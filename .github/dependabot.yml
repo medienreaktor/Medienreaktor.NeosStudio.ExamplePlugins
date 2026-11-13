@@ -1,7 +1,11 @@
+# Standard Dependabot configuration of a medienreaktor Composer package with a
+# frontend, copied unchanged from the set-up-ci skill
+# (templates/package/dependabot-frontend.yml). It is dependabot.yml plus the npm
+# entry, which Dependabot fails on in a package without a package.json.
 version: 2
 updates:
-    # ci.yml pins third-party actions by commit SHA, which is the right call for
-    # review but means nothing ever tells us they went stale. This does.
+    # The workflows pin third-party actions by commit SHA, which is the right call
+    # for review but means nothing ever tells us they went stale. This does.
     - package-ecosystem: "github-actions"
       directory: "/"
       schedule:
@@ -35,20 +39,24 @@ updates:
       ignore:
           # The Neos range encodes which Neos generations this package supports.
           # The CI matrix proves that range; moving it is a release decision, not
-          # dependency drift.
+          # dependency drift. Matches nothing in a package outside Neos.
           - dependency-name: "neos/*"
-          # The Studio range follows the Studio release this package is built and
-          # type-checked against (see ci.yml); moving it is a release decision too.
+          # A Studio plugin's Studio range follows the Studio release it is built
+          # and type-checked against; moving it is a release decision too.
           - dependency-name: "medienreaktor/neos-studio"
+          # The same for a package built on Symfony rather than Neos (FigmaTools'
+          # symfony/console): the range the matrix proves, not drift.
+          - dependency-name: "symfony/*"
 
-    # The plugin's build dependencies. One grouped pull request per month; the
-    # frontend job in ci.yml shows whether the result still builds.
+    # Every frontend, wherever ci.yml finds one: the root or Resources/Private/*/.
     - package-ecosystem: "npm"
-      directory: "/Resources/Private/Plugin"
+      directories:
+          - "/"
+          - "/Resources/Private/*"
       schedule:
           interval: "monthly"
       groups:
-          plugin:
+          frontend:
               patterns:
                   - "*"
       commit-message:
