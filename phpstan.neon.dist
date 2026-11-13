@@ -1,0 +1,14 @@
+parameters:
+    level: 5
+    paths:
+        - Classes
+        - Tests
+    # The second place the PHP floor is pinned, beside require.php ^8.4 in
+    # composer.json; change both together. CI would not need it, since the lint
+    # job runs on the floor. It is for local runs: the package is developed in
+    # a project's DistributionPackages.local, inside that project's DDEV, on the
+    # project's PHP - and must still be analysed against its own oldest target.
+    #
+    # Classes/ does not exist yet. CI skips PHPStan and PHP_CodeSniffer until it
+    # holds a PHP file, so this configuration is ready for the first class.
+    phpVersion: 80400

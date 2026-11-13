@@ -9,7 +9,10 @@
         "medienreaktor/neos-studio": "^2.0.5"
     },
     "require-dev": {
-        "neos/contentgraph-doctrinedbaladapter": "^9.2"
+        "neos/contentgraph-doctrinedbaladapter": "^9.2",
+        "phpstan/phpstan": "^2.2",
+        "phpunit/phpunit": "^11.5",
+        "squizlabs/php_codesniffer": "^4.0"
     },
     "extra": {
         "neos": {
@@ -25,9 +28,15 @@
         }
     },
     "scripts": {
+        "test": "./vendor/bin/phpunit",
         "lint:composer": "@composer validate --strict --no-check-lock",
+        "lint:phpstan": "@php vendor/bin/phpstan analyse",
+        "lint:phpcs": "./vendor/bin/phpcs --colors",
+        "lint:phpcs:fix": "./vendor/bin/phpcbf --colors",
         "lint": [
-            "@lint:composer"
+            "@lint:composer",
+            "@lint:phpcs",
+            "@lint:phpstan"
         ]
     }
 }
