@@ -2,7 +2,7 @@
 
 [![Packagist Version](https://img.shields.io/packagist/v/medienreaktor/neos-studio-example-plugins)](https://packagist.org/packages/medienreaktor/neos-studio-example-plugins)
 [![PHP Version Support](https://img.shields.io/packagist/dependency-v/medienreaktor/neos-studio-example-plugins/php)](https://www.php.net/)
-[![Test Status](https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/actions/workflows/ci.yml/badge.svg)](https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/actions/workflows/ci.yml)
+[![CI](https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/medienreaktor/Medienreaktor.NeosStudio.ExamplePlugins/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg)](LICENSE)
 
 A boilerplate for extending **Neos Studio** 2 (plugin API version 2) from a
