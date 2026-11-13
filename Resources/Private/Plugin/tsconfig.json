@@ -12,15 +12,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@medienreaktor/neos-studio": [
-        "../../../../Medienreaktor.NeosStudio/Resources/Public/Studio/types/index.d.ts"
-      ],
-      "react": ["./node_modules/@types/react"],
-      "react/*": ["./node_modules/@types/react/*"],
-      "react-dom": ["./node_modules/@types/react-dom"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }
